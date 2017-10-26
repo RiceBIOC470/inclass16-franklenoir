@@ -84,18 +84,30 @@ meanint2_2 = cat(1, chan2dat2.MeanIntensity);
 negones = -1*ones(size(area));
 negones2 = -1*ones(size(area2));
 peak = [xy, area, negones,meanint,meanint2];
-peaks{1} = num2cell(peak);
+peaks{1} = (peak);
 peak = [xy2, area2, negones2,meanint1_2,meanint2_2];
-peaks{2} = num2cell(peak(1:27,:));
+peaks{2} = (peak(1:27,:));
 
 % Part 2. Run match frames on this peaks array. ensure that it has filled
 % the entries in peaks as described above. 
 
 peaks_matched = MatchFrames(peaks, 2,0.1);
-%Index exceeds matrix dimensions. Unable to fix this issue. 
-% When index was matched errors occured with number precision
+%Index was off, took off last peak.
 
 % Part 3. Display the image from the second frame. For each cell that was
 % matched, plot its position in frame 2 with a blue square, its position in
 % frame 1 with a red star, and connect these two with a green line. 
+iplane2 = reader1.getIndex(1-1,1-1,2-1)+1;
+tempimg2 = bfGetPlane(reader1,iplane2);
+figure; imshow(tempimg2,lims); hold on;
+plot(peaks{1}(:,1),peaks{1}(:,2),'r*');
+plot(peaks{2}(:,1),peaks{2}(:,2),'cs');
+
+
+
+
+
+
+
+
 
