@@ -93,6 +93,7 @@ peaks{2} = num2cell(peak(1:27,:));
 
 peaks_matched = MatchFrames(peaks, 2,0.1);
 %Index exceeds matrix dimensions. Unable to fix this issue. 
+% When index was matched errors occured with number precision
 
 % Part 3. Display the image from the second frame. For each cell that was
 % matched, plot its position in frame 2 with a blue square, its position in
